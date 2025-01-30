@@ -53,7 +53,7 @@
             const resultStr = new TextDecoder("utf-8").decode(resultView);
 
             const resultDiv = document.getElementById("result");
-            resultDiv.textContent = "Result: " + resultStr.toString();
+            resultDiv.textContent = "Result: " + decodeURIComponent(escape(resultStr.toString()));
 
             result.instance.exports.freeMemory(resultPtr, resultLen);
             } catch (e) {
