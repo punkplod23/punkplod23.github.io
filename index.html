@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Go WebAssembly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="wasm_exec.js"></script>
+</head>
+
+<body>
+    <h1>WebAssembly</h1>
+    <p>Add two numbers, using WebAssembly calling an add() method written in Go:</p>
+    <input type="text" id="hash" value="257ff9bdbf2ac3f56ed6598c049a8b3b" />
+       <input type="text" id="word" value="chaplin" />
+ 
+       <button onclick="javascript:calculate();">Calculate</button>
+       <div id="result"></div>
+    <script>
+        
+        async function calculate() {
+            try {
+                const go = new Go();
+                const result = await WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject);
+                await go.run(result.instance);
+                const hashFromWasm = document.getElementById("hash").value;
+                const guessFromUser = document.getElementById("word").value;
+
+                const hashUTF8 = new TextEncoder().encode(hashFromWasm);
+                const hashPtr = result.instance.exports.malloc(hashUTF8.length);
+                const hashView = new Uint8Array(result.instance.exports.memory.buffer, hashPtr, hashUTF8.length);
+                hashView.set(hashUTF8);
+
+                const guessUTF8 = new TextEncoder().encode(guessFromUser);
+                const guessPtr = result.instance.exports.malloc(guessUTF8.length);
+                const guessView = new Uint8Array(result.instance.exports.memory.buffer, guessPtr, guessUTF8.length);
+                guessView.set(guessUTF8);
+
+            const resultPtr = result.instance.exports.decryptHashWasm(hashView.byteOffset, hashUTF8.length, guessView.byteOffset, guessUTF8.length);
+            
+            const resultLen = 32; // assuming the result length is 32 bytes
+            const resultView = new Uint8Array(result.instance.exports.memory.buffer, resultPtr, resultLen);
+            const resultStr = new TextDecoder("utf-8").decode(resultView);
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = "Result: " + resultStr.toString();
+
+            result.instance.exports.freeMemory(resultPtr, resultLen);
+            } catch (e) {
+                console.error("Error:", e);
+            }
+        }
+
+    </script>
+    
+</body>
+
+</html>
