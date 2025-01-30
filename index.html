@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>WebAssembly</h1>
+    <h1>Hash Detector</h1>
     <p>Detecting the hash of a given string method written in Go:</p>
     <input type="text" id="hash" value="257ff9bdbf2ac3f56ed6598c049a8b3b" />
        <input type="text" id="word" value="chaplin" />
@@ -53,7 +53,7 @@
             const resultStr = new TextDecoder("utf-8").decode(resultView);
 
             const resultDiv = document.getElementById("result");
-            resultDiv.textContent = "Result: " + resultStr.toString().replace(/[^\x00-\x7F]/g, "");
+            resultDiv.innerHTML = "Result: " + resultStr.toString().replace(/[^\x00-\x7F]/g, "");
 
             result.instance.exports.freeMemory(resultPtr, resultLen);
             } catch (e) {
