@@ -12,14 +12,31 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg">
-            <nav class="navbar">
-                    <div class="navbar-nav" style="display: block;">
-                        <a class="nav-item nav-link active" href="index.html" target="_blank">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="hash.html" target="_blank">Hash </a>
-                        <a class="nav-item nav-link" href="snake.html" target="_blank">(Canvas js Wasm)Snake</a>
-                        <a class="nav-item nav-link" href="3dcube.html" target="_blank">(WebGL Wasm)3D Cube Gigl (https://github.com/go4orward/gigl)</a>
-                    </div>
-            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar w/ text</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="hash.html">Wasm Hash</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="snake.html">(Canvas js Wasm)Snake</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="3dcube.html">(WebGL Wasm)3D Cube Gigl (https://github.com/go4orward/gigl)</a>
+                      </li>
+                  </ul>
+                  <span class="navbar-text">
+                    Navbar text with an inline element
+                  </span>
+                </div>
+              </nav>
         </div>
     </div>
     <div class="row">
