@@ -22,10 +22,10 @@
                               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="hash.html">Wasm Hash</a>
+                              <a class="nav-link" href="hashdecrypt.html">Wasm Hash</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="hashdecrypt.html">Wasm Hash</a>
+                              <a class="nav-link" href="hash.html">Wasm decryptHashWasm</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="snake.html">(Canvas js Wasm)Snake</a>
@@ -45,58 +45,55 @@
         <div class="col-lg">
             <h1>Hash Detector</h1>
             <p>Detecting the hash of a given string method written in Go:</p>
-            <input type="text" id="hash" value="257ff9bdbf2ac3f56ed6598c049a8b3b" />
-            <input type="text" id="word" value="chaplin" />
+            <p><b>Massive limitations with WASM tinygo WASI memory GC no channels and no threads</b></p>
+            <p>Locked to 4 character decryptions only</p>
+            <input type="text" id="hash" value="MD5" />
+            <input type="text" id="word" value="098f6bcd4621d373cade4e832627b4f6" />
+            <input type="text" id="sizee" value="4" />
             <button onclick="javascript:calculate();">Calculate</button>
-            <p>Hashes Detectable</p>
-            <ul>
-                <li>Whirlpool</li>
-                <li>md2</li>
-                <li>md4</li>
-                <li>md5</li>
-                <li>sha1</li>
-                <li>More but some failing</li>
-            </ul>
+      
             <div id="result"></div>
         </div>
     </div>
 </div>
-    <script>
-        
-        async function calculate() {
-            try {
-                const go = new Go();
-                const result = await WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject);
-                await go.run(result.instance);
-                const hashFromWasm = document.getElementById("hash").value;
-                const guessFromUser = document.getElementById("word").value;
+<script>
+             
+  async function calculate() {
+      try {
+          const go = new Go();
+          const result = await WebAssembly.instantiateStreaming(fetch("hashdecrypt.wasm"), go.importObject);
+          await go.run(result.instance);
+          const hashFromWasm = document.getElementById("hash").value;
+          const guessFromUser = document.getElementById("word").value;
+          const charLimit = parseInt(document.getElementById("sizee").value);
 
-                const hashUTF8 = new TextEncoder().encode(hashFromWasm);
-                const hashPtr = result.instance.exports.malloc(hashUTF8.length);
-                const hashView = new Uint8Array(result.instance.exports.memory.buffer, hashPtr, hashUTF8.length);
-                hashView.set(hashUTF8);
+          const hashUTF8 = new TextEncoder().encode(hashFromWasm);
+          const hashPtr = result.instance.exports.malloc(hashUTF8.length);
+          const hashView = new Uint8Array(result.instance.exports.memory.buffer, hashPtr, hashUTF8.length);
+          hashView.set(hashUTF8);
 
-                const guessUTF8 = new TextEncoder().encode(guessFromUser);
-                const guessPtr = result.instance.exports.malloc(guessUTF8.length);
-                const guessView = new Uint8Array(result.instance.exports.memory.buffer, guessPtr, guessUTF8.length);
-                guessView.set(guessUTF8);
+          const guessUTF8 = new TextEncoder().encode(guessFromUser);
+          const guessPtr = result.instance.exports.malloc(guessUTF8.length);
+          const guessView = new Uint8Array(result.instance.exports.memory.buffer, guessPtr, guessUTF8.length);
+          guessView.set(guessUTF8);
 
-            const resultPtr = result.instance.exports.decryptHashWasm(hashView.byteOffset, hashUTF8.length, guessView.byteOffset, guessUTF8.length);
-            
-            const resultLen = 32; // assuming the result length is 32 bytes
-            const resultView = new Uint8Array(result.instance.exports.memory.buffer, resultPtr, resultLen);
-            const resultStr = new TextDecoder("utf-8").decode(resultView);
+      //const resultPtr = result.instance.exports.decryptHashWasm(hashView.byteOffset, hashUTF8.length, guessView.byteOffset, guessUTF8.length);
+      const resultPtr = result.instance.exports.bruteForceWasm(hashView.byteOffset, hashUTF8.length, guessView.byteOffset, guessUTF8.length,charLimit);
+      
+      const resultLen = 32; // assuming the result length is 32 bytes
+      const resultView = new Uint8Array(result.instance.exports.memory.buffer, resultPtr, resultLen);
+      const resultStr = new TextDecoder("utf-8").decode(resultView);
 
-            const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = "Result: " + resultStr.toString().replace(/[^\x00-\x7F]/g, "");
+      const resultDiv = document.getElementById("result");
+      resultDiv.textContent = "Result: " + resultStr.toString();
 
-            result.instance.exports.freeMemory(resultPtr, resultLen);
-            } catch (e) {
-                console.error("Error:", e);
-            }
-        }
+      result.instance.exports.freeMemory(resultPtr, resultLen);
+      } catch (e) {
+          console.error("Error:", e);
+      }
+  }
 
-    </script>
+</script>
     
 </body>
 
