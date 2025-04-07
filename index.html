@@ -46,19 +46,20 @@
         <div class="col-lg">
             <h1>WebAssembly</h1>
             <p>I started learning about web assembly because frank suggested it during my last presentation, but truth be told i see other applications beyond websites for this technology, i will tail back to this in the end.</p>
-            <p>Solomon Hykes
-                <quote>
-                  If WASM+WASI existed in 2008, we wouldn't have needed to created Docker. That's how important it is. Webassembly on the server is the future of computing. A standardized system interface was the missing link. Let's hope WASI is up to the task!
-                  <br />- Solomon Hykes, Docker Founder
-                  <br /> <a href="https://www.linkedin.com/pulse/solomon-hykes-webassembly-server-why-its-future-computing-hykes/">Solomon Hykes</a>
-                </quote>
 
+            <p>Solomon Hykes
+              <quote>
+                If WASM+WASI existed in 2008, we wouldn't have needed to created Docker. That's how important it is. Webassembly on the server is the future of computing. A standardized system interface was the missing link. Let's hope WASI is up to the task!
+                <br>- Solomon Hykes, Docker Founder
+                <br><a href="https://www.linkedin.com/pulse/solomon-hykes-webassembly-server-why-its-future-computing-hykes/">Solomon Hykes</a>
+              </quote>
             </p>
 
-            <h1>Wasm </h1>
+            <h1>Wasm</h1>
             <p>Wasm is a binary instruction format for a stack-based virtual machine. It is designed as a portable compilation target for high-level languages like C, C++, and Rust, enabling deployment on the web for client and server applications.</p>
             <p>Wasm is a low-level assembly-like language with a compact binary format that can be executed in a safe, sandboxed environment. It is designed to be fast to decode and execute, making it suitable for performance-critical applications.</p>
             <p>Wasm is designed to be a compilation target for high-level languages, allowing developers to write code in languages like C, C++, and Rust and compile it to Wasm for execution in the browser or other environments.</p>
+
             <pre class="text-monospace">
             +------------------------+
             |    Web Applications    |
@@ -72,90 +73,91 @@
             |    Operating System    |
             +------------------------+
             </pre>
+
             <pre class="text-monospace">
-                     +------------------+
-                     |   WASI Runtime   |
-                     +------------------+
-                     |    System API    |
-                     |   File I/O      |
-                     |   Network       |
-                     |   Threads       |
-                     |   Time          |
-                     |   Random        |
-                     +--------+--------+
-                          |
-                     +--------v--------+
-                     |  WebAssembly    |
-                     |    Module       |
-                     +--------+--------+
-                          |
-                     +--------v--------+
-                     |   Host System   |
-                     | (Browser/Node/  |
-                     |  Native/etc.)   |
-                     +------------------+
+                 +------------------+
+                 |   WASI Runtime   |
+                 +------------------+
+                 |    System API    |
+                 |   File I/O      |
+                 |   Network       |
+                 |   Threads       |
+                 |   Time          |
+                 |   Random        |
+                 +--------+--------+
+                    |
+                 +--------v--------+
+                 |  WebAssembly    |
+                 |    Module       |
+                 +--------+--------+
+                    |
+                 +--------v--------+
+                 |   Host System   |
+                 | (Browser/Node/  |
+                 |  Native/etc.)   |
+                 +------------------+
             </pre>
+
             <p>Use cases for WebAssembly, such as:</p>
             <ul>
-                <li>Performance-critical applications</li>
-                <li>Porting existing codebases to the web</li>
-                <li>Running languages other than JavaScript in the browser</li>
-                <li>Sandboxed execution environments</li>
-                <li>Cross-platform compatibility</li>
-            </p>
+              <li>Performance-critical applications</li>
+              <li>Porting existing codebases to the web</li>
+              <li>Running languages other than JavaScript in the browser</li>
+              <li>Sandboxed execution environments</li>
+              <li>Cross-platform compatibility</li>
+            </ul>
 
-            <h1>Go Experiments</h1> 
+            <h1>Go Experiments</h1>
             <p>I will run through each of these locally.
-            <br /><a href="https://github.com/punkplod23/wasm-tutorial">All types of experiments</a></p>
-            
+            <br><a href="https://github.com/punkplod23/wasm-tutorial">All types of experiments</a></p>
+
             <h1>Languages</h1>
             <ul>
-                <li>C++<br />
-                    <a href="https://emscripten.org/docs/getting_started/downloads.html">emscripten</a>
-                </li>
-                <li>Go<br />
-                    <a>Its in the stdlib</a><br />
-                    <a href="https://tinygo.org/">Or use tinygo for smaller bins, broke since 1.24 release</a>
-                </li>
-                <li>Java<br />
-                  <a href="https://chicory.dev/">Chickory</a>
-
-                </li>
-                <li>C#<br />
-                    <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/webassembly">Blazor</a>
-                </li>
-                <li>Rust
-                  <a href="https://rustwasm.github.io/wasm-bindgen/">wasm-bind</a>
-                  <a href="https://rustwasm.github.io/docs/wasm-pack/">wasm-pack</a>
-                </li>
-                <li>Python<br />
-                    <a href="https://emscripten.org/docs/porting/pyodide.html">Pyodide</a>
-                </li>
-                <li>
-                  Many more languages<br />
-                  <a href="https://webassembly.org/getting-started/developers-guide/">WebAssembly Languages</a>
-                </li>
+              <li>C++<br>
+                <a href="https://emscripten.org/docs/getting_started/downloads.html">emscripten</a>
+              </li>
+              <li>Go<br>
+                <a>Its in the stdlib</a><br>
+                <a href="https://tinygo.org/">Or use tinygo for smaller bins, broke since 1.24 release</a>
+              </li>
+              <li>Java<br>
+                <a href="https://chicory.dev/">Chickory</a>
+              </li>
+              <li>C#<br>
+                <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/webassembly">Blazor</a>
+              </li>
+              <li>Rust
+                <a href="https://rustwasm.github.io/wasm-bindgen/">wasm-bind</a>
+                <a href="https://rustwasm.github.io/docs/wasm-pack/">wasm-pack</a>
+              </li>
+              <li>Python<br>
+                <a href="https://emscripten.org/docs/porting/pyodide.html">Pyodide</a>
+              </li>
+              <li>Many more languages<br>
+                <a href="https://webassembly.org/getting-started/developers-guide/">WebAssembly Languages</a>
+              </li>
             </ul>
-            <p>But x is not memory Safe rust is.... Wasm is not memory safe, but it is a good start.<br >
-              Also for my fellow rustaceans a joke, we are always right, but we are not always correct.
-              <pre><code>
-                use libc::{malloc, free};
-                use std::ffi::c_void;
-                
-                pub unsafe fn i_put_on_my_wizards_hat_and_cloak() -> *mut c_void {
-                    let size = 1024; // Example size
-                    println!("*Puts on a pointy hat and cloak and casts a spell of chaos*");
-                    // Allocate memory using malloc
-                    malloc(size) as *mut c_void
-                }
-              </code></pre>
 
-            </p>
+            <p>But x is not memory Safe rust is.... Wasm is not memory safe, but it is a good start.<br>
+            Also for my fellow rustaceans a joke, we are always right, but we are not always correct.</p>
+            <pre><code>
+            use libc::{malloc, free};
+            use std::ffi::c_void;
+
+            pub unsafe fn i_put_on_my_wizards_hat_and_cloak() -> *mut c_void {
+              let size = 1024; // Example size
+              println!("*Puts on a pointy hat and cloak and casts a spell of chaos*");
+              // Allocate memory using malloc
+              malloc(size) as *mut c_void
+            }
+            </code></pre>
+
             <h1>Forewarned is forearmed</h1>
             <p>Wasm is not a replacement for JavaScript, but rather a complement to it. It is designed to work alongside JavaScript, allowing developers to leverage the strengths of both technologies.</p>
             <p>Wasm is not a silver bullet for performance. While it can provide significant performance improvements for certain types of applications, it is not a one-size-fits-all solution. Developers should carefully consider whether Wasm is the right choice for their specific use case.</p>
             <p>Wasm is not a standalone technology. It relies on a host environment (such as a web browser or a server) to execute Wasm modules. Developers should be aware of the limitations and capabilities of the host environment when working with Wasm.</p>
             <p>Wasm is not a replacement for native applications. While Wasm can provide near-native performance in the browser, it is not a substitute for native applications in terms of capabilities and performance. Developers should consider the trade-offs between Wasm and native applications when making architectural decisions.</p>
+
             <h1>WASI Runtime</h1>
             <ul>
               <li><a href="https://wasmer.io/">Wasmer</a> - Universal WebAssembly Runtime</li>
@@ -164,6 +166,7 @@
               <li><a href="https://github.com/WAVM/WAVM">WAVM</a> - Performance focused Runtime</li>
               <li><a href="https://wazero.io/">Wazero</a> - Zero dependency Go Runtime</li>
             </ul>
+
             <h1>Kubernates</h1>
             <p>WebAssembly modules are typically smaller than native binaries because:</p>
             <ul>
