@@ -2,7 +2,7 @@
 
 function loop(){
 
-    if (!window.lastUpdate || Date.now() - window.lastUpdate >= 50) {
+    if (!window.lastUpdate || Date.now() - window.lastUpdate >= 100) {
         window.lastUpdate = Date.now();
         window.game.update();
     }
