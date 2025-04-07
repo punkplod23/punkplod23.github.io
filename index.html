@@ -50,15 +50,33 @@
             <a href="https://github.com/punkplod23/wasm-tutorial">All types of experiments</a>
             <h1>Languages</h1>
             <ul>
-                <li>C++</li>
-                <li>Go</li>
-                <li>Java</li>
-                <li>C#</li>
-                <li>Rust</li>
+                <li>C++<br />
+                    <a href="https://emscripten.org/docs/getting_started/downloads.html">/a>emscripten</a>
+                </li>
+                <li>Go<br />
+                    <a>Its in the stdlib</a><br />
+                    <a href="https://tinygo.org/">Or use tinygo for smaller bins, broke since 1.24 release</a>
+                </li>
+                <li>Java<br />
+                  <a href="https://chicory.dev/">Chickory</a>
+
+                </li>
+                <li>C#<br />
+                    <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/webassembly">Blazor</a>
+                </li>
+                <li>Rust
+                  <a href="https://rustwasm.github.io/wasm-bindgen/">wasm-bind</a>
+                  <a href="https://rustwasm.github.io/docs/wasm-pack/">wasm-pack</a>
+                </li>
+                <li>Python<br />
+                    <a href="https://emscripten.org/docs/porting/pyodide.html">Pyodide</a>
+                </li>
+                <li>
+                  Many more languages<br />
+                  <a href="https://webassembly.org/docs/languages/">WebAssembly Languages</a>
+                </li>
             </ul>
-
-
-            <p>But x is not memory Safe rust is.... Wasm is not memory safe, but it is a good start.
+            <p>But x is not memory Safe rust is.... Wasm is not memory safe, but it is a good start.<br >
               Also for my fellow rustaceans a joke, we are always right, but we are not always correct.
               <code>
                 se libc::{malloc, free};
