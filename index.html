@@ -46,9 +46,32 @@
         <div class="col-lg">
             <h1>Wasm Experiments</h1>
             <p>Experiments with WebAssembly click the nav above to view</p>
-          
+            <h1>Go Experiments</h1> 
+            <a href="https://github.com/punkplod23/wasm-tutorial">All types of experiments</a>
+            <h1>Languages</h1>
+            <ul>
+                <li>C++</li>
+                <li>Go</li>
+                <li>Java</li>
+                <li>C#</li>
+                <li>Rust</li>
+            </ul>
 
 
+            <p>But x is not memory Safe rust is.... Wasm is not memory safe, but it is a good start.
+              Also for my fellow rustaceans a joke, we are always right, but we are not always correct.
+              <code>
+                se libc::{malloc, free};
+                use std::ffi::c_void;
+                
+                pub unsafe fn i_put_on_my_wizards_hat_and_cloak() -> *mut c_void {
+                    let size = 1024; // Example size
+                    println!("*Puts on a pointy hat and twirls a glowing staff... the clock ticks ominously...*");
+                    malloc(size) as *mut c_void
+                }
+              </code>
+
+            </p>
 
         </div>
     </div>
