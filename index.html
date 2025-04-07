@@ -44,6 +44,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg">
+            <h1>WebAssembly</h1>
+            <p>I started learning about web assembly because frank suggested it during my last presentation, but truth be told i see other applications beyond websites for this technology, i will tail back to this in the end.</p>
+
             <h1>Wasm </h1>
             <p>Wasm is a binary instruction format for a stack-based virtual machine. It is designed as a portable compilation target for high-level languages like C, C++, and Rust, enabling deployment on the web for client and server applications.</p>
             <p>Wasm is a low-level assembly-like language with a compact binary format that can be executed in a safe, sandboxed environment. It is designed to be fast to decode and execute, making it suitable for performance-critical applications.</p>
@@ -152,6 +155,22 @@
               <li><a href="https://github.com/WasmEdge/WasmEdge">WasmEdge</a> - Cloud Native Runtime</li>
               <li><a href="https://github.com/WAVM/WAVM">WAVM</a> - Performance focused Runtime</li>
               <li><a href="https://wazero.io/">Wazero</a> - Zero dependency Go Runtime</li>
+            </ul>
+            <h1>Kubernates</h1>
+            <p>WebAssembly modules are typically smaller than native binaries because:</p>
+            <ul>
+              <li>Binary format optimized for size and load time</li>
+              <li>Only includes necessary functions</li>
+              <li>Stripped debug information</li>
+            </ul>
+
+            <h2>WebAssembly in Kubernetes</h2>
+            <p>WebAssembly integrates with Kubernetes through:</p>
+            <ul>
+              <li>WASM-based containers (smaller, faster than Docker)</li>
+              <li>Krustlet - runs WASM workloads natively</li>
+              <li>Spin and WasmEdge runtimes for cloud deployments</li>
+              <li>Better resource utilization and startup times</li>
             </ul>
         </div>
     </div>
