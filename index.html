@@ -84,7 +84,14 @@
                      |  Native/etc.)   |
                      +------------------+
             </pre>
-            
+            <p>Use cases for WebAssembly, such as:</p>
+            <ul>
+                <li>Performance-critical applications</li>
+                <li>Porting existing codebases to the web</li>
+                <li>Running languages other than JavaScript in the browser</li>
+                <li>Sandboxed execution environments</li>
+                <li>Cross-platform compatibility</li>
+            </p>
 
             <h1>Go Experiments</h1> 
             <p>I will run through each of these locally.
@@ -133,6 +140,11 @@
               </code></pre>
 
             </p>
+            <h1>Forewarned is forearmed</h1>
+            <p>Wasm is not a replacement for JavaScript, but rather a complement to it. It is designed to work alongside JavaScript, allowing developers to leverage the strengths of both technologies.</p>
+            <p>Wasm is not a silver bullet for performance. While it can provide significant performance improvements for certain types of applications, it is not a one-size-fits-all solution. Developers should carefully consider whether Wasm is the right choice for their specific use case.</p>
+            <p>Wasm is not a standalone technology. It relies on a host environment (such as a web browser or a server) to execute Wasm modules. Developers should be aware of the limitations and capabilities of the host environment when working with Wasm.</p>
+            <p>Wasm is not a replacement for native applications. While Wasm can provide near-native performance in the browser, it is not a substitute for native applications in terms of capabilities and performance. Developers should consider the trade-offs between Wasm and native applications when making architectural decisions.</p>
 
         </div>
     </div>
