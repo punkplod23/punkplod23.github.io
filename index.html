@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Wasm Experiments</a>
+        <a class="navbar-brand" href="#">Wasm</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,7 @@
               </li>
           </ul>
           <span class="navbar-text">
-            Wasm Experiments
+            Wasm
           </span>
         </div>
       </nav>
@@ -44,11 +44,47 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg">
-            <h1>Wasm Experiments</h1>
-            <p>Experiments with WebAssembly click the nav above to view</p>
+            <h1>Wasm </h1>
             <p>Wasm is a binary instruction format for a stack-based virtual machine. It is designed as a portable compilation target for high-level languages like C, C++, and Rust, enabling deployment on the web for client and server applications.</p>
             <p>Wasm is a low-level assembly-like language with a compact binary format that can be executed in a safe, sandboxed environment. It is designed to be fast to decode and execute, making it suitable for performance-critical applications.</p>
             <p>Wasm is designed to be a compilation target for high-level languages, allowing developers to write code in languages like C, C++, and Rust and compile it to Wasm for execution in the browser or other environments.</p>
+            <pre class="text-monospace">
+            +------------------------+
+            |    Web Applications    |
+            +------------------------+
+            |    JavaScript / API    |
+            +--------+------+-------+
+            | JS     | WASM | HTML  |
+            +--------+------+-------+
+            |      Web Browser      |
+            +------------------------+
+            |    Operating System    |
+            +------------------------+
+            </pre>
+            <pre class="text-monospace">
+                     +------------------+
+                     |   WASI Runtime   |
+                     +------------------+
+                     |    System API    |
+                     |   File I/O      |
+                     |   Network       |
+                     |   Threads       |
+                     |   Time          |
+                     |   Random        |
+                     +--------+--------+
+                          |
+                     +--------v--------+
+                     |  WebAssembly    |
+                     |    Module       |
+                     +--------+--------+
+                          |
+                     +--------v--------+
+                     |   Host System   |
+                     | (Browser/Node/  |
+                     |  Native/etc.)   |
+                     +------------------+
+            </pre>
+            
 
             <h1>Go Experiments</h1> 
             <a href="https://github.com/punkplod23/wasm-tutorial">All types of experiments</a>
